@@ -3,15 +3,19 @@ import { StyleSheet, Text, View } from 'react-native';
 import GeolocationExample from './components/GeoLocationExample'
 import Map from './components/Map'
 import Gyroscope from './components/Gyroscope'
-import Gestures from './components/Gestures'
+import Drag from './components/Drag'
+import Swipe from './components/Swipe'
+import LongPress from './components/LongPress'
 import MapView, { MAP_TYPES } from 'react-native-maps';
 
 export default class App extends React.Component {
   render() {
     return (
       // <Map/>
-      // <Gestures/>
-      <Gyroscope/>
+      // <Drag/>
+      // <Swipe/>
+      <LongPress/>
+      // <Gyroscope/>
     );
   }
 }
