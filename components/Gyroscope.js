@@ -23,13 +23,7 @@ export default class GyroscopeSensor extends Component {
     }
   };
 
-  _slow = () => {
-    Gyroscope.setUpdateInterval(1000);
-  };
 
-  _fast = () => {
-    Gyroscope.setUpdateInterval(16);
-  };
 
   _subscribe = () => {
     this._subscription = Gyroscope.addListener(result => {
@@ -51,18 +45,6 @@ export default class GyroscopeSensor extends Component {
         <Text>
           x: {round(x)} y: {round(y)} z: {round(z)}
         </Text>
-
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={this._toggle} style={styles.button}>
-            <Text>Toggle</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this._slow} style={[styles.button, styles.middleButton]}>
-            <Text>Slow</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this._fast} style={styles.button}>
-            <Text>Fast</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     );
   }
@@ -79,23 +61,6 @@ function round(n) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    alignItems: 'stretch',
-    marginTop: 15,
-  },
-  button: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#eee',
-    padding: 10,
-  },
-  middleButton: {
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderColor: '#ccc',
   },
   sensor: {
     marginTop: 15,
