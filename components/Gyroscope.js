@@ -1,43 +1,48 @@
-import React, { Component } from 'react';
-import { Gyroscope } from 'expo';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { Component } from 'react'
+import { Gyroscope } from 'expo'
+import { StyleSheet, Text, View } from 'react-native'
+
+const styles = StyleSheet.create({
+  sensor: {
+    marginTop: 15,
+    paddingHorizontal: 10
+  }
+})
 
 export default class GyroscopeSensor extends Component {
   state = {
-    gyroscopeData: {},
-  };
+    gyroscopeData: {}
+  }
 
   componentDidMount() {
-    this._toggle();
+    this._toggle()
   }
 
   componentWillUnmount() {
-    this._unsubscribe();
+    this._unsubscribe()
   }
 
   _toggle = () => {
     if (this._subscription) {
-      this._unsubscribe();
+      this._unsubscribe()
     } else {
-      this._subscribe();
+      this._subscribe()
     }
-  };
-
-
+  }
 
   _subscribe = () => {
     this._subscription = Gyroscope.addListener(result => {
-      this.setState({ gyroscopeData: result });
-    });
-  };
+      this.setState({ gyroscopeData: result })
+    })
+  }
 
   _unsubscribe = () => {
-    this._subscription && this._subscription.remove();
-    this._subscription = null;
-  };
+    this._subscription && this._subscription.remove()
+    this._subscription = null
+  }
 
   render() {
-    let { x, y, z } = this.state.gyroscopeData;
+    let { x, y, z } = this.state.gyroscopeData
 
     return (
       <View style={styles.sensor}>
@@ -46,24 +51,14 @@ export default class GyroscopeSensor extends Component {
           x: {round(x)} y: {round(y)} z: {round(z)}
         </Text>
       </View>
-    );
+    )
   }
 }
 
 function round(n) {
   if (!n) {
-    return 0;
+    return 0
   }
 
-  return Math.floor(n * 100) / 100;
+  return Math.floor(n * 100) / 100
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  sensor: {
-    marginTop: 15,
-    paddingHorizontal: 10,
-  },
-});

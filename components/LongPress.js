@@ -1,26 +1,5 @@
-import React, { Component } from 'react';
-import { Alert, AppRegistry, Platform, StyleSheet, Text, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback, View } from 'react-native';
-
-export default class LongPress extends Component {
-  _onPressButton() {
-    Alert.alert('Too short press!!')
-  }
-
-  _onLongPressButton() {
-    Alert.alert('You long-pressed the button!!')
-  }
-  render() {
-    return (
-      <View style={styles.container}>
-        <TouchableHighlight onPress={this._onPressButton} onLongPress={this._onLongPressButton} underlayColor="white">
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Touch Me!</Text>
-          </View>
-        </TouchableHighlight>
-      </View>
-    );
-  }
-}
+import React, { Component } from 'react'
+import { Alert, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 
 const styles = StyleSheet.create({
   container: {
@@ -37,7 +16,29 @@ const styles = StyleSheet.create({
     padding: 20,
     color: 'white'
   }
-});
+})
 
-// skip this line if using Create React Native App
-AppRegistry.registerComponent('AwesomeProject', () => Touchables);
+export default class LongPress extends Component {
+  _onPressButton() {
+    Alert.alert('Too short press!!')
+  }
+
+  _onLongPressButton() {
+    Alert.alert('You long-pressed the button!!')
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <TouchableHighlight
+          onPress={this._onPressButton}
+          onLongPress={this._onLongPressButton}
+          underlayColor="white"
+        >
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Touch Me!</Text>
+          </View>
+        </TouchableHighlight>
+      </View>
+    )
+  }
+}

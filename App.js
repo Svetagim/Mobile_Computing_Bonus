@@ -1,64 +1,11 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import GeolocationExample from './components/GeoLocationExample'
+import React, { Component } from 'react'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import Map from './components/Map'
 import Gyroscope from './components/Gyroscope'
 import Drag from './components/Drag'
-// import Sphere from './components/Sphere'
 import Swipe from './components/Swipe'
 import Accel from './components/Accel'
 import LongPress from './components/LongPress'
-import MapView, { MAP_TYPES } from 'react-native-maps';
-
-export default class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      currentComponent: "Accel"
-    }
-  }
-
-  // renderComponenten(){
-
-  // }
-  render() {
-    return (
-      // <Map/>
-      // <Drag/>
-      // <Swipe/>
-      // <LongPress/>
-      // <Gyroscope/>
-      // <Sphere/>
-      // <Accel/>
-      <View style={styles.container}>
-        <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button}>
-              <Text>Geo-Location</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.Button]}>
-            {/* onPress={()=>{this.setState(()=>{currentComponent:"Gyroscope"})}}> */}
-              <Text>Gyroscope</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-              <Text>Accelerometer</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button}>
-            <Text>drag</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.button, styles.Button]}>
-            <Text>swipe</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
-            <Text>long press</Text>
-          </TouchableOpacity>
-        </View>
-       <Text>{this.state.currentComponent}</Text>
-      </View>
-    )};
-  }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -70,25 +17,99 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: 'row',
-    alignItems: 'stretch',
-    // marginTop: 15,
+    alignItems: 'stretch'
   },
   button: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#eee',
-    padding: 10,
-    // borderLeftWidth: 1,
-    // borderRightWidth: 1,
-    // borderTopWidth: 1,
-    // borderBottomWidth: 1,
+    padding: 10
   },
-  middleButton: {
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: '#ccc',
+  txt: {
+    marginTop: 60
   }
-});
+})
+
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentComponent: ''
+    }
+  }
+
+  render() {
+    const setComponent = this.state.currentComponent
+    let comp
+
+    switch (setComponent) {
+      case 'Map':
+        comp = <Map />
+        break
+      case 'Drag':
+        comp = <Drag />
+        break
+      case 'Swipe':
+        comp = <Swipe />
+        break
+      case 'LongPress':
+        comp = <LongPress />
+        break
+      case 'Gyroscope':
+        comp = <Gyroscope />
+        break
+      case 'Accel':
+        comp = <Accel />
+        break
+      default:
+        comp = <Text style={styles.txt}>Please Click On a Button</Text>
+    }
+
+    return (
+      <View style={styles.container}>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.setState({ currentComponent: 'Drag' })}
+          >
+            <Text>Drag</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.setState({ currentComponent: 'Swipe' })}
+          >
+            <Text>Swipe</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.setState({ currentComponent: 'LongPress' })}
+          >
+            <Text>Long Press</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.setState({ currentComponent: 'Map' })}
+          >
+            <Text>Geo-Locaition</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.setState({ currentComponent: 'Gyroscope' })}
+          >
+            <Text>Gyroscope</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.setState({ currentComponent: 'Accel' })}
+          >
+            <Text>Accelerometer</Text>
+          </TouchableOpacity>
+        </View>
+        {comp}
+      </View>
+    )
+  }
+}

@@ -18,7 +18,37 @@
     "three": "^0.104.0"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0"
+    "babel-preset-expo": "^5.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^5.0.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-config-react-native": "^4.0.0",
+    "eslint-plugin-jest": "^22.6.4",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-native": "^3.7.0",
+    "prettier": "^1.18.2"
   },
-  "private": true
+  "private": true,
+  "checkSubmission": {
+    "ex": "Bonus",
+    "students": [
+      {
+        "id": "308679844",
+        "fullName": "Sveta Gimpelsom",
+        "email": "svetagimpelson@gmail.com"
+      },
+      {
+        "id": "204429898",
+        "fullName": "Yaniv Ben Hamo",
+        "email": "yaniv.bhemo@gmail.com"
+      }
+    ],
+    "os": "Mac",
+    "device": "iOS",
+    "deliveryDate": "18/06/2019",
+    "delay": false,
+    "delayReason": "",
+    "comments": "Expo"
+  }
 }
