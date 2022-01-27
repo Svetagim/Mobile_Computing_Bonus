@@ -15,7 +15,7 @@
     "react-native-maps": "^0.24.2",
     "react-native-sensors": "^5.1.8",
     "react-native-swipe-gestures": "^1.0.3",
-    "three": "^0.104.0"
+    "three": "^0.137.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
